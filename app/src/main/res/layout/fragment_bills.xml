@@ -8,81 +8,112 @@
     tools:context=".BillsFragment">
 
     <TextView
-        android:id="@+id/miscBillsLabel"
+        android:id="@+id/miscBillsTotal"
         android:layout_width="@dimen/label_width"
-        android:layout_height="0dp"
-        android:text="Misc"
-        app:layout_constraintBottom_toBottomOf="@+id/miscBills"
-        app:layout_constraintEnd_toStartOf="@+id/miscBills"
+        android:layout_height="48dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/miscBills"
         app:layout_constraintTop_toTopOf="@+id/miscBills" />
 
     <TextView
-        android:id="@+id/tensLabel"
+        android:id="@+id/onesTotal"
         android:layout_width="@dimen/label_width"
-        android:layout_height="0dp"
-        android:text="Tens"
-        app:layout_constraintBottom_toBottomOf="@+id/tens"
-        app:layout_constraintEnd_toStartOf="@+id/tens"
-        app:layout_constraintTop_toBottomOf="@+id/miscBills" />
+        android:layout_height="48dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/ones"
+        app:layout_constraintTop_toTopOf="@+id/ones" />
 
     <TextView
-        android:id="@+id/fivesLabel"
+        android:id="@+id/tensTotal"
         android:layout_width="@dimen/label_width"
-        android:layout_height="0dp"
-        android:text="Fives"
-        app:layout_constraintBottom_toBottomOf="@+id/fives"
-        app:layout_constraintEnd_toStartOf="@+id/fives"
-        app:layout_constraintTop_toTopOf="@+id/fives"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_height="48dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/tens"
+        app:layout_constraintTop_toTopOf="@+id/tens" />
+
+    <TextView
+        android:id="@+id/fivesTotal"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/fives"
+        app:layout_constraintTop_toTopOf="@+id/fives" />
+
+    <EditText
+        android:id="@+id/miscBills"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/miscBillsLabel"
+        app:layout_constraintTop_toTopOf="@+id/miscBillsLabel" />
 
     <TextView
         android:id="@+id/onesLabel"
         android:layout_width="@dimen/label_width"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:text="Ones"
-        app:layout_constraintBottom_toBottomOf="@+id/ones"
-        app:layout_constraintEnd_toStartOf="@+id/ones"
-        app:layout_constraintTop_toBottomOf="@+id/fives"
-        app:layout_constraintVertical_bias="0.423" />
-
-    <EditText
-        android:id="@+id/miscBills"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/miscBillsLabel"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/tens"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/miscBillsLabel"
-        app:layout_constraintTop_toBottomOf="@+id/miscBills"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/fives"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/tens"
-        app:layout_constraintTop_toBottomOf="@+id/tens"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/fivesLabel"
+        app:layout_constraintTop_toBottomOf="@+id/fivesLabel" />
 
     <EditText
         android:id="@+id/ones"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/fives"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/onesLabel"
+        app:layout_constraintTop_toTopOf="@+id/onesLabel" />
+
+    <EditText
+        android:id="@+id/fives"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/fivesLabel"
-        app:layout_constraintTop_toBottomOf="@+id/fives" />
+        app:layout_constraintTop_toTopOf="@+id/fivesLabel" />
+
+    <TextView
+        android:id="@+id/miscBillsLabel"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="Misc"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tensLabel"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="Tens"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/miscBillsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/miscBillsLabel" />
+
+    <TextView
+        android:id="@+id/fivesLabel"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="Fives"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/tensLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tensLabel" />
+
+    <EditText
+        android:id="@+id/tens"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/tensLabel"
+        app:layout_constraintTop_toTopOf="@+id/tensLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

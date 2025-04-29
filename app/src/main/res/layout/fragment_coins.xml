@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".CoinsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/coins" />
+        android:id="@+id/nickelsTotal"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/nickels"
+        app:layout_constraintTop_toTopOf="@+id/nickels" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/quartersTotal"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/quarters"
+        app:layout_constraintTop_toTopOf="@+id/quarters" />
+
+    <TextView
+        android:id="@+id/dimesTotal"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/dimes"
+        app:layout_constraintTop_toTopOf="@+id/dimes" />
+
+    <TextView
+        android:id="@+id/penniesTotal"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/pennies"
+        app:layout_constraintTop_toTopOf="@+id/pennies" />
+
+    <TextView
+        android:id="@+id/quartersLabel"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="Quarters"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dimesLabel"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="Dimes"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/quartersLabel"
+        app:layout_constraintTop_toBottomOf="@+id/quartersLabel" />
+
+    <TextView
+        android:id="@+id/nickelsLabel"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="Nickels"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/dimesLabel"
+        app:layout_constraintTop_toBottomOf="@+id/dimesLabel" />
+
+    <TextView
+        android:id="@+id/penniesLabel"
+        android:layout_width="@dimen/label_width"
+        android:layout_height="48dp"
+        android:text="Pennies"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/nickelsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/nickelsLabel" />
+
+    <EditText
+        android:id="@+id/quarters"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/quartersLabel"
+        app:layout_constraintTop_toTopOf="@+id/quartersLabel" />
+
+    <EditText
+        android:id="@+id/dimes"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/dimesLabel"
+        app:layout_constraintTop_toTopOf="@+id/dimesLabel" />
+
+    <EditText
+        android:id="@+id/nickels"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="number"
+
+        app:layout_constraintStart_toEndOf="@+id/nickelsLabel"
+        app:layout_constraintTop_toTopOf="@+id/nickelsLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/pennies"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+
+        app:layout_constraintStart_toEndOf="@+id/penniesLabel"
+        app:layout_constraintTop_toTopOf="@+id/penniesLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
