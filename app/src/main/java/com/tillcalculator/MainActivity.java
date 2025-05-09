@@ -24,9 +24,9 @@ import java.math.RoundingMode;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
-    BillsFragment firstFragment = new BillsFragment();
-    CoinsFragment secondFragment = new CoinsFragment();
-    RollsFragment thirdFragment = new RollsFragment();
+    BillsFragment firstFragment;
+    CoinsFragment secondFragment;
+    RollsFragment thirdFragment;
     BigDecimal miscBills = new BigDecimal(0).setScale(2, RoundingMode.HALF_EVEN);
     BigDecimal tensSum = new BigDecimal(0).setScale(2, RoundingMode.HALF_EVEN);
     BigDecimal fivesSum = new BigDecimal(0).setScale(2, RoundingMode.HALF_EVEN);
@@ -43,12 +43,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firstFragment = new BillsFragment();
+        secondFragment = new CoinsFragment();
+        thirdFragment = new RollsFragment();
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.billsFragment);
-
     }
 
     private BigDecimal createBigDecimal(double n) {
@@ -65,41 +67,56 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return createBigDecimal(asInt).multiply(createBigDecimal(scalar)).setScale(2, RoundingMode.HALF_EVEN);
     }
 
-    private void setSumView(int id, BigDecimal val){
-        ((TextView) findViewById(id)).setText(val.toString());
+    private void setSumView(int id, BigDecimal val) {
+        TextView view = ((TextView) findViewById(id));
+        if (view != null) {
+            view.setText(val.toString());
+        }
+    }
+
+    private void setBillsSums() {
+        setSumView(R.id.miscBillsTotal, miscBills);
+        setSumView(R.id.tensTotal, tensSum);
+        setSumView(R.id.fivesTotal, fivesSum);
+        setSumView(R.id.onesTotal, onesSum);
+    }
+
+    private void setCoinsSums() {
+        setSumView(R.id.quartersTotal, quartersSum);
+        setSumView(R.id.dimesTotal, dimesSum);
+        setSumView(R.id.nickelsTotal, nickelsSum);
+        setSumView(R.id.penniesTotal, penniesSum);
+    }
+
+    private void setRollsSums() {
+        setSumView(R.id.quartersRollsTotal, quartersRollSum);
+        setSumView(R.id.dimesRollsTotal, dimesRollSum);
+        setSumView(R.id.nickelsRollsTotal, nickelsRollSum);
+        setSumView(R.id.penniesRollsTotal, penniesRollSum);
     }
 
     public void getSum(View view) {
         switch (bottomNavigationView.getSelectedItemId()) {
             case R.id.billsFragment:
                 miscBills = getField(R.id.miscBills, 1);
-                setSumView(R.id.miscBillsTotal, miscBills);
                 tensSum = getField(R.id.tens, 10);
-                setSumView(R.id.tensTotal, tensSum);
                 fivesSum = getField(R.id.fives, 5);
-                setSumView(R.id.fivesTotal, fivesSum);
                 onesSum = getField(R.id.ones, 1);
-                setSumView(R.id.onesTotal, onesSum);
+                setBillsSums();
                 break;
             case R.id.coinsFragment:
                 quartersSum = getField(R.id.quarters, 0.25);
-                setSumView(R.id.quartersTotal, quartersSum);
                 dimesSum = getField(R.id.dimes, 0.1);
-                setSumView(R.id.dimesTotal, dimesSum);
                 nickelsSum = getField(R.id.nickels, 0.05);
-                setSumView(R.id.nickelsTotal, nickelsSum);
                 penniesSum = getField(R.id.pennies, 0.01);
-                setSumView(R.id.penniesTotal, penniesSum);
+                setCoinsSums();
                 break;
             case R.id.rollsFragment:
                 quartersRollSum = getField(R.id.quartersRolls, 10);
-                setSumView(R.id.quartersRollsTotal, quartersRollSum);
                 dimesRollSum = getField(R.id.dimesRolls, 5);
-                setSumView(R.id.dimesRollsTotal, dimesRollSum);
                 nickelsRollSum = getField(R.id.nicklesRolls, 2);
-                setSumView(R.id.nickelsRollsTotal, nickelsRollSum);
                 penniesRollSum = getField(R.id.penniesRolls, 0.5);
-                setSumView(R.id.penniesRollsTotal, penniesRollSum);
+                setRollsSums();
                 break;
         }
         BigDecimal[] values = {miscBills, tensSum, fivesSum, onesSum, quartersSum, dimesSum, nickelsSum, penniesSum, quartersRollSum, dimesRollSum, nickelsRollSum, penniesRollSum};
@@ -116,14 +133,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         switch (item.getItemId()) {
             case R.id.billsFragment:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerViewMain, firstFragment).commit();
+                setBillsSums();
                 return true;
 
             case R.id.coinsFragment:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerViewMain, secondFragment).commit();
+                setCoinsSums();
                 return true;
 
             case R.id.rollsFragment:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerViewMain, thirdFragment).commit();
+                setRollsSums();
                 return true;
         }
         return false;
